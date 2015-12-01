@@ -5,22 +5,17 @@ class JobNode {
 	// edges
 	def parent = null
 	def childs = []
-	
-	// job
-	String moduleName
-	String level
-	
-	// os
-	String os = "RHEL6"
-	String arch = "x86_64"
-	
-	// scm
-	String scmRoot = "https://alma-svn.aoc.nrao.edu/p2"
-	String scmBranch = "trunk"
-	String scmCredential = ""
+
+	def module
+	def level
+	def configuration
 	
 	def getJobName() {
-		"${os}-${arch}-${scmBranch.toUpperCase()}-${level}-${moduleName}"
+		"${configuration.os}-${configuration.arch}-${configuration.branch.toUpperCase()}-${level}-${module}"
 	}
-
+	
+	def addChild(child) {
+		child.parent = this
+		childs << child
+	}
 }

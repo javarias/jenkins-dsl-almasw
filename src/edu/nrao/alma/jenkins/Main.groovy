@@ -4,56 +4,58 @@
 
 package edu.nrao.alma.jenkins
 
+import edu.nrao.alma.jenkins.tree.Configuration;
 import edu.nrao.alma.jenkins.tree.JobNode;
 
 class Main {
 	
 	static void main(String... args) {
+		
 		JobNode jobNode = new JobNode()
 
-		// os
-		def os = "RHEL6"
-		def arch = "x86_64"
-
-		// scm
-		def scmRoot = "https://alma-svn.aoc.nrao.edu/p2"
-		def scmBranch = "trunk"
-		def scmCredential = ""
-
 		def subsystems = []
+		
+		Configuration configuration = new Configuration()
+		// os
+		configuration.os = "RHEL6"
+		configuration.arch = "x86_64"
+		// scm
+		configuration.scm = "https://alma-svn.aoc.nrao.edu/p2"
+		configuration.branch = "trunk"
+		configuration.credential = ""
 
-		JobNode icd = new JobNode()
-		icd.moduleName = "ICD"
+		JobNode icd = new JobNode(configuration: configuration)
+		icd.module = "ICD"
 		icd.level = "00"
 		subsystems << icd
 
-		JobNode control = new JobNode()
-		control.moduleName = "CONTROL"
+		JobNode control = new JobNode(configuration: configuration)
+		control.module = "CONTROL"
 		control.level = "01"
 		subsystems << control
 
-		JobNode corr = new JobNode()
-		corr.moduleName = "CORR"
+		JobNode corr = new JobNode(configuration: configuration)
+		corr.module = "CORR"
 		corr.level = "05"
 		subsystems << corr
 
-		JobNode scheduling = new JobNode()
-		scheduling.moduleName = "SCHEDULING"
+		JobNode scheduling = new JobNode(configuration: configuration)
+		scheduling.module = "SCHEDULING"
 		scheduling.level = "02"
 		subsystems << scheduling
 
-		JobNode ssr = new JobNode()
-		ssr.moduleName = "SSR"
+		JobNode ssr = new JobNode(configuration: configuration)
+		ssr.module = "SSR"
 		ssr.level = "03"
 		subsystems << ssr
 
-		JobNode obsprep = new JobNode()
-		obsprep.moduleName = "OBSPRER"
+		JobNode obsprep = new JobNode(configuration: configuration)
+		obsprep.module = "OBSPRER"
 		obsprep.level = "06"
 		subsystems << obsprep
 
-		JobNode telcal = new JobNode()
-		telcal.moduleName = "TELCAL"
+		JobNode telcal = new JobNode(configuration: configuration)
+		telcal.module = "TELCAL"
 		telcal.level = "04"
 		subsystems << telcal
 
