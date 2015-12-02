@@ -2,7 +2,13 @@ package edu.nrao.alma.jenkins.utils
 
 import edu.nrao.alma.jenkins.tree.JobNode;
 
-import javaposse.jobdsl.dsl.jobs.FreeStyleJob;
+//import javaposse.jobdsl.dsl.DslScriptLoader
+//import javaposse.jobdsl.dsl.FileJobManagement
+//import javaposse.jobdsl.dsl.GeneratedItems
+//import javaposse.jobdsl.dsl.GeneratedJob
+//import javaposse.jobdsl.dsl.GeneratedView
+//import javaposse.jobdsl.dsl.ScriptRequest
+
 
 public class Generation {
 
@@ -32,8 +38,8 @@ public class Generation {
 		}
 	}
 	
-	static def jobs(JobNode node) {
-		def job = freeStyleJob() {
+	static def jobs(JobNode node, dslFactory) {
+		def job = dslFactory.job(node.name) {
 			scm {
 				svn {
 					location(node.scm) {
