@@ -38,7 +38,9 @@ public class Generation {
 		}
 	}
 	
+	// breath first pre order
 	static def jobs(JobNode node, dsl) {
+		
 		def job = dsl.job(node.name) {
 //			scm {
 //				dsl.svn {
@@ -58,6 +60,10 @@ public class Generation {
 					}
 				}
 			}
+		}
+		
+		node.childs.each {
+			jobs(it, dsl)
 		}
 	}
 	
