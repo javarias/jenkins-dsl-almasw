@@ -4,8 +4,8 @@
 
 package edu.nrao.alma.jenkins
 
-import edu.nrao.alma.jenkins.tree.Configuration;
 import edu.nrao.alma.jenkins.tree.JobNode;
+import edu.nrao.alma.jenkins.utils.Configuration;
 
 class Main {
 	

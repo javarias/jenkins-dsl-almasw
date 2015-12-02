@@ -1,4 +1,4 @@
-package edu.nrao.alma.jenkins.tree
+package edu.nrao.alma.jenkins.utils
 
 class Configuration {
 	
