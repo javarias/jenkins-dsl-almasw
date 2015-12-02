@@ -12,6 +12,8 @@ class JobNode {
 	def level
 	def configuration
 	
+	def job
+	
 	def getName() {
 		"${configuration.os}-${configuration.arch}-${configuration.branch.toUpperCase()}-${level}-${module}"
 	}

@@ -71,6 +71,8 @@ public class Generation {
 		node.childs.each {
 			jobs(it, dsl)
 		}
+		
+		node.job = job
 	}
 	
 	static def view(Configuration configuration) {
