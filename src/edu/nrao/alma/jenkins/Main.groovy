@@ -9,40 +9,42 @@ import edu.nrao.alma.jenkins.utils.Configuration
 import edu.nrao.alma.jenkins.utils.Generation;
 
 class Main {
-	
-	static void main(String... args) {
-		
-		JobNode jobNode = new JobNode()
 
-		def subsystems = []
-		
+	static void main(String... args) {
+
 		Configuration configuration = new Configuration()
 
 		JobNode icd = new JobNode(configuration: configuration)
 		icd.module = "ICD"
 		icd.level = "00"
 
-		JobNode control = JobNode(configuration: configuration)
+		JobNode control = new JobNode()
 		control.module = "CONTROL"
 		control.level = "01"
+		control.configuration = configuration
 
-		JobNode corr = JobNode(configuration: configuration)
+		JobNode corr = new JobNode()
+		corr.configuration = configuration
 		corr.module = "CORR"
 		corr.level = "05"
 
-		JobNode scheduling = JobNode(configuration: configuration)
+		JobNode scheduling = new JobNode()
+		scheduling.configuration = configuration
 		scheduling.module = "SCHEDULING"
 		scheduling.level = "02"
 
-		JobNode ssr = new JobNode(configuration: configuration)
+		JobNode ssr = new JobNode()
+		ssr.configuration = configuration
 		ssr.module = "SSR"
 		ssr.level = "03"
 
-		JobNode obsprep = new JobNode(configuration: configuration)
+		JobNode obsprep = new JobNode()
+		obsprep.configuration = configuration
 		obsprep.module = "OBSPREP"
 		obsprep.level = "06"
 
-		JobNode telcal = new JobNode(configuration: configuration)
+		JobNode telcal = new JobNode()
+		telcal.configuration = configuration
 		telcal.module = "TELCAL"
 		telcal.level = "04"
 
@@ -56,7 +58,7 @@ class Main {
 
 		// subsystems.each { println it.jobName }
 		// icd.childs.each { println it.name }
-		
+
 		//Generation.traverse(icd, true)
 		def corrIntlist = Generation.intlist(corr)
 		println corrIntlist

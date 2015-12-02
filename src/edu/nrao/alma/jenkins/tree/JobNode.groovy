@@ -17,7 +17,7 @@ class JobNode {
 	}
 	
 	def getIntroot() {
-		"${configuration.intlist}/${name}-b${configuration.JENKINS_BUILD_NUMBER}"
+		"${configuration.intlist}/${name}-b${configuration.BUILD_NUMBER}"
 	}
 	
 	def getScm() {
