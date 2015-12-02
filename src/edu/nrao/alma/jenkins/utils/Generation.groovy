@@ -5,8 +5,11 @@ import edu.nrao.alma.jenkins.tree.JobNode;
 public class Generation {
 
 	// deep first pre-order traverse
-	static def traverse(JobNode node, root = false) {
-		println node.name + " " + node.introot
+	static def traverse(JobNode node, out, root = false) {
+
+		if(out != null) {
+			out.println(node.name)
+		}
 
 		node.childs.each { traverse(it) }
 
