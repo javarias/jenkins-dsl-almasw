@@ -2,6 +2,8 @@ package edu.nrao.alma.jenkins.utils
 
 import edu.nrao.alma.jenkins.tree.JobNode;
 
+import javaposse.jobdsl.dsl.jobs.FreeStyleJob;
+
 public class Generation {
 
 	// deep first pre-order traverse
