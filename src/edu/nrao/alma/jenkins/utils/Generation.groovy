@@ -9,6 +9,8 @@ import edu.nrao.alma.jenkins.tree.JobNode;
 //import javaposse.jobdsl.dsl.GeneratedView
 //import javaposse.jobdsl.dsl.ScriptRequest
 
+import javaposse.jobdsl.dsl.Job
+
 
 public class Generation {
 
@@ -42,21 +44,25 @@ public class Generation {
 	static def jobs(JobNode node, dsl) {
 		
 		def job = dsl.job(node.name) {
+			// checkout strategy, clean
 			scm {
-//				dsl.svn {
-//					location(node.scm) {
-//						directory(mode.module)
-//						credentials(scm.credentials)
-//					}
-//				}
+				svn {
+					location(node.scm) {
+						directory(mode.module)
+						credentials(scm.credentials)
+					}
+				}
 			}
-		}
-		
-		job.with {
-			steps {
-				downstreamParameterized {
-					node.childs.each {
-						trigger(it.name, "SUCCESS", true)
+			
+			// Email Notification
+			// Build other projects
+			// Build periodically
+			with {
+				steps {
+					downstreamParameterized {
+						node.childs.each {
+							trigger(it.name, "SUCCESS", true)
+						}
 					}
 				}
 			}
