@@ -42,14 +42,14 @@ public class Generation {
 	static def jobs(JobNode node, dsl) {
 		
 		def job = dsl.job(node.name) {
-//			scm {
+			scm {
 //				dsl.svn {
 //					location(node.scm) {
 //						directory(mode.module)
 //						credentials(scm.credentials)
 //					}
 //				}
-//			}
+			}
 		}
 		
 		job.with {
