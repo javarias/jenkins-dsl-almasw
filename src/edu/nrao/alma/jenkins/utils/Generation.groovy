@@ -38,10 +38,10 @@ public class Generation {
 		}
 	}
 	
-	static def jobs(JobNode node, dslFactory) {
-		def job = dslFactory.job(node.name) {
-			scm {
-				svn {
+	static def jobs(JobNode node, dsl) {
+		def job = dsl.job(node.name) {
+			dsl.scm {
+				dsl.svn {
 					location(node.scm) {
 						directory(mode.module)
 						credentials(scm.credentials)
@@ -51,10 +51,10 @@ public class Generation {
 		}
 		
 		job.with {
-			steps {
-				downStreamParameterized {
+			dsl.steps {
+				dsl.downStreamParameterized {
 					node.childs.each {
-						trigger(it.name, "SUCCESS", true)
+						dsl.trigger(it.name, "SUCCESS", true)
 					}
 				}
 			}
