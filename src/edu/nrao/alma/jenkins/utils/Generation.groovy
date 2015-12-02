@@ -48,7 +48,7 @@ public class Generation {
 			scm {
 				svn {
 					location(node.scm) {
-						directory(mode.module)
+						directory(node.module)
 						credentials(node.configuration.credential)
 					}
 				}
