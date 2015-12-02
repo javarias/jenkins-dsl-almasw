@@ -40,7 +40,7 @@ public class Generation {
 	
 	static def jobs(JobNode node, dsl) {
 		def job = dsl.job(node.name) {
-			dsl.scm {
+			scm {
 				dsl.svn {
 					location(node.scm) {
 						directory(mode.module)
