@@ -52,7 +52,7 @@ public class Generation {
 		
 		job.with {
 			steps {
-				downStreamParameterized {
+				downstreamParameterized {
 					node.childs.each {
 						trigger(it.name, "SUCCESS", true)
 					}
