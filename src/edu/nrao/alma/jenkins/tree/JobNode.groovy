@@ -1,5 +1,7 @@
 package edu.nrao.alma.jenkins.tree
 
+import edu.nrao.alma.jenkins.utils.Configuration;
+
 class JobNode {
 	
 	// edges
@@ -10,8 +12,16 @@ class JobNode {
 	def level
 	def configuration
 	
-	def getJobName() {
+	def getName() {
 		"${configuration.os}-${configuration.arch}-${configuration.branch.toUpperCase()}-${level}-${module}"
+	}
+	
+	def getIntroot() {
+		"${configuration.intlist}/${name}-b${configuration.JENKINS_BUILD_NUMBER}"
+	}
+	
+	def getScm() {
+		"${configuration.scm}/${configuration.branch}/${module}"
 	}
 	
 	def addChild(child) {
