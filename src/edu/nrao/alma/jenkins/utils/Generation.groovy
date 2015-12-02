@@ -11,7 +11,7 @@ public class Generation {
 			out.println(node.name)
 		}
 
-		node.childs.each { traverse(it) }
+		node.childs.each { traverse(it, out) }
 
 		if(root) {
 			node
