@@ -48,8 +48,8 @@ public class Generation {
 			scm {
 				svn {
 					location(node.scm) {
-						directory(mode.module)
-						credentials(scm.credentials)
+//						directory(mode.module)
+//						credentials(scm.credentials)
 					}
 				}
 			}
